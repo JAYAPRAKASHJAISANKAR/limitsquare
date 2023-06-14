@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Square of Square Numbers Calculator</title>
+    <style>
+      /* Common styles for all devices */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f7f7f7;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .form-group input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #333;
+      }
+
+      .button-container {
+        text-align: center;
+      }
+
+      .button-container button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .button-container button:hover {
+        background-color: #45a049;
+      }
+
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+      }
+
+      /* Media queries for different devices */
+
+      /* Adjustments for laptops and desktops */
+      @media (min-width: 992px) {
+        .container {
+          max-width: 600px;
+        }
+      }
+
+      /* Adjustments for tablets */
+      @media (min-width: 768px) and (max-width: 991px) {
+        .container {
+          max-width: 500px;
+        }
+      }
+
+      /* Adjustments for mobile phones */
+      @media (max-width: 767px) {
+        .container {
+          padding: 10px;
+        }
+
+        .title {
+          font-size: 20px;
+        }
+
+        .form-group input[type="number"] {
+          padding: 6px;
+        }
+
+        .button-container button {
+          padding: 8px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <label for="limitInput">Enter the limit for square numbers:</label>
+    <input type="number" id="limitInput" />
+    <button onclick="calculateSquareOfSquareNumbers()">
+      Calculate Square of Square Numbers
+    </button>
+    <div class="result" id="result"></div>
+
+    <script>
+      function calculateSquareOfSquareNumbers() {
+        var limitInput = document.getElementById("limitInput");
+        var limit = Number(limitInput.value);
+        var result = document.getElementById("result");
+
+        if (isNaN(limit) || limit <= 0) {
+          result.innerHTML = "Please enter a valid positive number.";
+        } else {
+          var squareNumbers = [];
+
+          for (var i = 2; i <= limit; i *= i) {
+            squareNumbers.push(i);
+          }
+
+          var squareOfSquareNumbers = squareNumbers.map(function (num) {
+            return num * num;
+          });
+
+          result.innerHTML =
+            "The square of square numbers up to " +
+            limit +
+            " are: " +
+            squareOfSquareNumbers.join(", ") +
+            ".";
+        }
+      }
+    </script>
+  </body>
+</html>
